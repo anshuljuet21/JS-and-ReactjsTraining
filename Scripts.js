@@ -222,3 +222,77 @@ function fnIntTestdel()
 
 }
 
+function fngetdata()
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET","https://reqres.in/api/users?page=2",true)
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4 && xhr.status==200){
+            var data=JSON.parse(xhr.responseText)
+            console.log(data);
+        }
+    }
+
+    xhr.send();
+}
+
+function fnpostdata()
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST","https://reqres.in/api/users",true)
+    xhr.setRequestHeader("content-type","application/json")
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4 && xhr.status==201){
+            console.log('record created')
+        }
+    }
+
+    
+    var data = {
+        name: "John Doe",
+        job: "Software Engineer"
+    };
+
+    xhr.send(JSON.stringify(data));
+}
+
+
+function fnputdata()
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT","https://reqres.in/api/users/2",true)
+    xhr.setRequestHeader("content-type","application/json")
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4 && xhr.status==200){
+            console.log('Data record updated')
+        }
+    }
+
+    var data = {
+        name: "John Doe",
+        job: "Software Engineer"
+    };
+
+    xhr.send(JSON.stringify(data));
+}
+
+function fndeldata()
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open("delete","https://reqres.in/api/users/2",true)
+    xhr.setRequestHeader("content-type","application/json")
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4 && xhr.status==204){
+            console.log('Data record Deleted')
+        }
+    }
+
+    var data = {
+        name: "John Doe",
+        job: "Software Engineer"
+    };
+
+    xhr.send(JSON.stringify(data));
+}
+
+
