@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function fnval() {
+            var name = document.getElementById('txtname');
+            var gen = document.getElementsByName('gender');
+            var gencount = 0;
+            for (var i = 0; i < gen.length; i++) {
+                if (gen[i].checked) {
+                    gencount++;
+                }
+            }
+            if (name.value.length == 0) {
+                alert('Name is required! Please enter a name.');
+                name.focus();
+                return false;
+            } else {
+                if (gencount == 0) {
+                    alert('Please select a gender.');
+                }
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form action="00.html" method="post"> <!-- Replace "submit_url_here" with the actual URL -->
+        Name:
+        <input type="text" id="txtname" name="txtname" placeholder="Enter your name">
+        <br>
+        Gender:
+        <input type="radio" name="gender" value="male">Male
+        <input type="radio" name="gender" value="female">Female
+        <input type="radio" name="gender" value="other">Other
+        <br>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
